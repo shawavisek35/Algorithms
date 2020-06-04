@@ -9,7 +9,7 @@ void pop();
 
 typedef struct stack
 {
-    int a[100];
+    int aa[100];
     int top;
 }st;
 
@@ -49,5 +49,15 @@ int main()
 void push(int a)
 {
     graph_stack.top += 1;
-    graph_stack.a[graph_stack.top] = a; 
+    graph_stack.aa[graph_stack.top] = a; 
+}
+
+void pop()
+{
+    graph_stack.top --;
+}
+
+void DFS(int adjacency_matrix[][] , int graph[])
+{
+    int visited[100][100]
 }
