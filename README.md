@@ -5,3 +5,5 @@ This repo consistes of several common algorithms that help people start with a c
 
 # Special Algorithms
 The foobar folder containes the programs written in Python which was a part of the google foobar challange.
+
+This repo also contains solutions to hackerrank coding problems.
