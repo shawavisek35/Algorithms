@@ -16,9 +16,6 @@ def findLargest(beg,end,arr):
         else:
             end = mid
         
-
-        
-
 #driver code
 arr = [10 , 20 , 35 , 300 , 80 , 200 , 1 , 0]
 largest_element = findLargest(0,len(arr)-1,arr)
