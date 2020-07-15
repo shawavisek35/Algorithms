@@ -24,6 +24,14 @@ int main()
     {
         cout << t << "\n";
     }
+    cout << array.back() << "\n";
 
+    //derefrencing of the iterator pointer
+    cout << *array.begin() << "\n";
+    cout << *array.end() << "\n";
+
+    cout << array.max_size() << "\n";
+    cout << array.empty() << "\n";
+    array.clear();
     return 0;
 }
