@@ -1,11 +1,9 @@
 #include <iostream>
-#include <map>
 using namespace std;
 
 
 void solve()
 {
-    map <char, int> q;
     int n, i;
     string query;
     cin >> n;
@@ -13,14 +11,15 @@ void solve()
     int mask = 0;
     for(auto ch : query)
     {
-        mask^=1<<(ch-'a');
+        mask ^= 1 << (ch-'a');
     }
-    if(mask)
+    if(mask!=0)
     {
         cout << "NO\n";
         return;
     }
     cout << "YES\n";
+    return;
 }
 
 int main()
