@@ -1,15 +1,8 @@
 package oopsAssignment;
+import java.util.Scanner;
 
 public class Room {
 	 private double height, width, breadth;
-	 
-	 //parameterized constructor
-	 public Room(double h, double w, double b)
-	 {
-		 this.height = h;
-		 this.width = w;
-		 this.breadth = b;
-	 }
 	 
 	 //getter methods
 	 public double getHeight()
@@ -26,15 +19,15 @@ public class Room {
 	 }
 	 
 	 //setter methods
-	 public void setHeight(int h)
+	 public void setHeight(double h)
 	 {
 		 this.height = h;
 	 }
-	 public void setWidth(int w)
+	 public void setWidth(double w)
 	 {
 		 this.width = w;
 	 }
-	 public void setBreadth(int b)
+	 public void setBreadth(double b)
 	 {
 		 this.breadth = b;
 	 }
@@ -50,6 +43,19 @@ class TestRoom {
 	public static void main(String args[])
 	{
 		//creating an object
-		Room newRoom = new Room(45.0, 33.3, 100.0);
+		Room newRoom = new Room();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the height of the room : ");
+		double h = input.nextDouble();
+		System.out.println("Enter the width of the room : ");
+		double w = input.nextDouble();
+		System.out.println("Enter the breadth of the room : ");
+		double b = input.nextDouble();
+		newRoom.setHeight(h);
+		newRoom.setBreadth(b);
+		newRoom.setWidth(w);
+		
+		System.out.println("The volume of the given room is : "+ newRoom.claculateVolume());
+		input.close();
 	}
 }
