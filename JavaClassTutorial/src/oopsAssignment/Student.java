@@ -119,7 +119,11 @@ public class Student {
 	{
 		return name+"\t"+maths+"\t"+english+"\t"+algorithms+"\t"+os+"\t"+ai;
 	}
-	
+
+}
+
+class StudentMarks
+{
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
@@ -145,5 +149,4 @@ public class Student {
 		System.out.println("Grade : "+st.getLetterGrade());
 
 	}
-
 }
