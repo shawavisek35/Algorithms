@@ -108,6 +108,10 @@ public class Date {
 		}
 		return false;
 	}
+}
+
+class Driver
+{
 	public static void main(String args[])
 	{
 		Scanner input = new Scanner(System.in);
@@ -134,12 +138,8 @@ public class Date {
 			System.out.println("Two dates are equal....");
 		}
 		else {
-			System.out.println("The dates are not equal.....");
+			System.out.println("Two dates are not equal.....");
 		}
+		input.close();
 	}
-}
-
-class Driver
-{
-	
 }
