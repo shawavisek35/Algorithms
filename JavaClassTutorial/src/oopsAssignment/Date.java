@@ -1,5 +1,5 @@
 package oopsAssignment;
-
+import java.util.Scanner;
 public class Date {
 	private int day;
 	private int month;
@@ -16,7 +16,7 @@ public class Date {
 	//Parameterized constructor
 	Date(int day, int month, int year)
 	{
-		if(day>0 && day<32 && month>0 && month<=12 && year>0 && year<=365)
+		if(day>0 && day<31 && month>0 && month<=12 && year>0)
 		{
 			this.day = day;
 			this.month = month;
@@ -82,7 +82,15 @@ public class Date {
 	//Difference between two dates
 	public int dateDifference(Date d1, Date d2)
 	{
-		int day = (d2.day-d1.day) + 30*(d2.month-d1.month) + 365*(d2.year-d1.year);
+		int day;
+		if(d2.year == d1.year)
+		{
+			day = 30*(d2.month-d1.month) + (d2.day-d1.day);
+		}
+		else
+		{
+			day = (360 - (30*(d1.month-1)+d1.day)) + 360*(d2.year-d1.year - 1) + 30*(d2.month-1) + d2.day;
+		}
 		return day;
 	}
 	
@@ -100,4 +108,38 @@ public class Date {
 		}
 		return false;
 	}
+	public static void main(String args[])
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the day1 : ");
+		int day1 = input.nextInt();
+		System.out.println("Enter the month1 : ");
+		int month1 = input.nextInt();
+		System.out.println("Enter the year1 : ");
+		int year1 = input.nextInt();
+		System.out.println("Enter the day2 : ");
+		int day2 = input.nextInt();
+		System.out.println("Enter the month2 : ");
+		int month2 = input.nextInt();
+		System.out.println("Enter the year2 : ");
+		int year2 = input.nextInt();
+		Date d1 = new Date(day1,month1,year1);
+		Date d2 = new Date(day2,month2, year2);
+		
+		System.out.println("The Date you entered is....\nDate1 : "+d1.toString()+"\nDate2 : "+d2.toString());
+		System.out.println("The Difference between two dates : "+d1.dateDifference(d1, d2)+" days.");
+		
+		if(d1.isEqual(d1, d2))
+		{
+			System.out.println("Two dates are equal....");
+		}
+		else {
+			System.out.println("The dates are not equal.....");
+		}
+	}
+}
+
+class Driver
+{
+	
 }
