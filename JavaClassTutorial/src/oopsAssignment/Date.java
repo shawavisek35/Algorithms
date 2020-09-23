@@ -1,5 +1,6 @@
 package oopsAssignment;
 import java.util.Scanner;
+
 public class Date {
 	private int day;
 	private int month;
@@ -81,7 +82,7 @@ public class Date {
 	
 	private boolean isLeapYear(int year)
 	{
-		if(year%4==0)
+		if(year % 100 != 0 && year % 4 == 0 || year % 400 == 0)
 		{
 			return true;
 		}
@@ -110,7 +111,7 @@ public class Date {
 	//Difference between two dates in days
 	public int dateDifference(Date d1, Date d2)
 	{
-		int day1 = 0, day2 = 0, day = 0, year=0, i;
+		int day1 = 0, day2 = 0, dayt = 0, yeart=0, i;
 		if(d2.year == d1.year)
 		{
 			for(i=1;i<d2.month;i++)
@@ -124,33 +125,33 @@ public class Date {
 				day1 += noOfDays(i, d1.year);
 			}
 			day1 += d1.day;
-			day = day2 - day1;
+			dayt = day2 - day1;
 		}
 		else
 		{
-			year = isLeapYear(d1.year) ? 366 : 365;
+			yeart = isLeapYear(d1.year) ? 366 : 365;
 			for(i=1;i<d1.month;i++)
 			{
 				day1 += noOfDays(i, d1.year);
 			}
 			day1 += d1.day;
-			day = year-day1;
-			year = 0;
+			dayt = year-day1;
+			yeart = 0;
 			
 			for(i=d1.year+1;i<d2.year;i++)
 			{
-				year += isLeapYear(i) ? 366 : 365;
+				yeart += isLeapYear(i) ? 366 : 365;
 			}
-			day += year;
+			dayt += yeart;
 			
 			for(i=1;i<d2.month;i++)
 			{
 				day2 += noOfDays(i, d2.year);
 			}
 			day2 += d2.day;
-			day += day2;
+			dayt += day2;
 		}
-		return day;
+		return dayt;
 	}
 	
 	public String toString()
@@ -166,6 +167,54 @@ public class Date {
 			return true;
 		}
 		return false;
+	}
+	
+	//Adding or subtracting any number of days
+	public void changeDate(int day, int choice)
+	{
+		if(choice==1)
+		{
+			for(int i=1;i<=day;i++)
+			{
+				if(this.day + 1 < noOfDays(this.month, this.year))
+				{
+					this.day += 1;
+				}
+				else {
+					if(this.month<12)
+					{
+						this.month += 1;
+						this.day = 1;
+					}
+					else {
+						this.year += 1;
+						this.month = 1;
+						this.day = 1;
+					}
+				}
+			}
+		}
+		else {
+			for(int i=1;i<=day;i++)
+			{
+				if(this.day - 1 >= 1)
+				{
+					this.day -= 1;
+				}
+				else {
+					if(this.month>1)
+					{
+						this.month -= 1;
+						this.day = noOfDays(this.month, this.year);
+					}
+					else {
+						this.year -= 1;
+						this.month = 12;
+						this.day = 31;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -199,6 +248,17 @@ class Driver
 		else {
 			System.out.println("Two dates are not equal.....");
 		}
+		
+		System.out.println("Now You will see a magin the date will be changed as per your command........");
+		System.out.println("Your current date is : "+d1.toString());
+		System.out.println("Press 1 for going ahead in the future or press other number to go in the past...");
+		
+		int ch = input.nextInt();
+		System.out.println("Enter the number of days you want to go ahead or back...");
+		int newDays = input.nextInt();
+		d1.changeDate(newDays, ch);
+		System.out.println("You are now in date : "+d1.toString());
+		
 		input.close();
 	}
 }
