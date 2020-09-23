@@ -16,7 +16,7 @@ public class Date {
 	//Parameterized constructor
 	Date(int day, int month, int year)
 	{
-		if(day>0 && day<31 && month>0 && month<=12 && year>0)
+		if(day>0 && day<32 && month>0 && month<=12 && year>0)
 		{
 			this.day = day;
 			this.month = month;
@@ -79,17 +79,76 @@ public class Date {
 		}
 	}
 	
-	//Difference between two dates
+	private boolean isLeapYear(int year)
+	{
+		if(year%4==0)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	private int noOfDays(int month, int year)
+	{
+		if(month==1 || month==3 || month==5 || month==7 || month==10 || month==12)
+		{
+			return 31;
+		}
+		else if(month==2)
+		{
+			if(isLeapYear(year))
+			{
+				return 29;
+			}
+			return 28;
+		}
+		else {
+			return 30;
+		}
+	}
+	
+	//Difference between two dates in days
 	public int dateDifference(Date d1, Date d2)
 	{
-		int day;
+		int day1 = 0, day2 = 0, day = 0, year=0, i;
 		if(d2.year == d1.year)
 		{
-			day = 30*(d2.month-d1.month) + (d2.day-d1.day);
+			for(i=1;i<d2.month;i++)
+			{
+				day2 += noOfDays(i, d2.year);
+			}
+			day2 += d2.day;
+			
+			for(i=1;i<d1.month;i++)
+			{
+				day1 += noOfDays(i, d1.year);
+			}
+			day1 += d1.day;
+			day = day2 - day1;
 		}
 		else
 		{
-			day = (360 - (30*(d1.month-1)+d1.day)) + 360*(d2.year-d1.year - 1) + 30*(d2.month-1) + d2.day;
+			year = isLeapYear(d1.year) ? 366 : 365;
+			for(i=1;i<d1.month;i++)
+			{
+				day1 += noOfDays(i, d1.year);
+			}
+			day1 += d1.day;
+			day = year-day1;
+			year = 0;
+			
+			for(i=d1.year+1;i<d2.year;i++)
+			{
+				year += isLeapYear(i) ? 366 : 365;
+			}
+			day += year;
+			
+			for(i=1;i<d2.month;i++)
+			{
+				day2 += noOfDays(i, d2.year);
+			}
+			day2 += d2.day;
+			day += day2;
 		}
 		return day;
 	}
