@@ -176,7 +176,7 @@ public class Date {
 		{
 			for(int i=1;i<=day;i++)
 			{
-				if(this.day + 1 < noOfDays(this.month, this.year))
+				if(this.day + 1 <= noOfDays(this.month, this.year))
 				{
 					this.day += 1;
 				}
