@@ -122,7 +122,7 @@ public class Student {
 
 }
 
-class StudentMarks
+class DriverStudent
 {
 	public static void main(String[] args) {
 		
@@ -147,6 +147,30 @@ class StudentMarks
 		System.out.println("Total Marks : "+st.getTotalMarks());
 		System.out.println("Average Marks : "+st.average());
 		System.out.println("Grade : "+st.getLetterGrade());
+		input.close();
 
 	}
+
 }
+
+/*
+ * Output =>
+ * Enter your name : 
+	Avisek
+	Enter your marks in Maths : 
+	98
+	Enter your marks in English : 
+	94
+	Enter your marks in Algorithms : 
+	100
+	Enter your marks in OS : 
+	99
+	Enter your marks in AI : 
+	97
+	-----------------------Marks sheet--------------------
+	Name	Maths	English	Algorithms	OS	    AI
+	Avisek	98.0	94.0	100.0	    99.0	97.0
+	Total Marks : 488.0
+	Average Marks : 97.6
+	Grade : O
+*/

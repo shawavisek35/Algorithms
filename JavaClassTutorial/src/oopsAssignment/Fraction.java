@@ -107,7 +107,10 @@ public class Fraction {
 		f3.denominator /= Gcd;
 		return f3;
 	}
-	
+}
+
+class DriverFraction
+{
 	public static void main(String[] args)
 	{
 		int num, den;
@@ -127,23 +130,23 @@ public class Fraction {
 		Fraction f3;
 		
 		System.out.println("-----Your input fractions are : -----------");
-		System.out.println(f1.toString());
-		System.out.println(f2.toString());
+		System.out.println(f1.toString()+" : "+f1.getValue());
+		System.out.println(f2.toString()+" : "+f2.getValue());
 		System.out.println("Adding two fraction...........");
 		f3 = f1.addFraction(f1, f2);
-		System.out.println(f3.toString());
+		System.out.println(f3.toString()+" : "+f3.getValue());
 		
 		System.out.println("Subtracting two fraction...........");
 		f3 = f1.subtractFraction(f1, f2);
-		System.out.println(f3.toString());
+		System.out.println(f3.toString()+" : "+f3.getValue());
 		
 		System.out.println("Multiplying two fraction...........");
 		f3 = f1.multiplyFraction(f1, f2);
-		System.out.println(f3.toString());
+		System.out.println(f3.toString()+" : "+f3.getValue());
 		
 		System.out.println("Dividing two fraction...........");
 		f3 = f1.divideFraction(f1, f2);
-		System.out.println(f3.toString());
+		System.out.println(f3.toString()+" : "+f3.getValue());
 		
 		System.out.println("Checking if fraction 1 and fraction 2 are equal or not.......");
 		
@@ -157,26 +160,29 @@ public class Fraction {
 		input.close();
 	}
 }
-
-class DriverFraction
-{
-	
-}
 /*
  	Output =>
+	Inputs for fraction 1 : 
+	Enter the numerator for fraction 1 : 
+	12
+	Enter the denominator for fraction 1 : 
+	13
+	Inputs for fraction 2 : 
+	Enter the numerator for fraction 2 : 
+	14
 	Enter the denominator for fraction 2 : 
-	16
+	15
 	-----Your input fractions are : -----------
-	12/13
-	15/16
+	12/13 : 0.9230769230769231
+	14/15 : 0.9333333333333333
 	Adding two fraction...........
-	387/208
+	362/195 : 1.8564102564102565
 	Subtracting two fraction...........
-	-3/208
+	-2/195 : -0.010256410256410256
 	Multiplying two fraction...........
-	45/52
+	56/65 : 0.8615384615384616
 	Dividing two fraction...........
-	64/65
+	90/91 : 0.989010989010989
 	Checking if fraction 1 and fraction 2 are equal or not.......
 	Both the fractions are unequal.......
 */

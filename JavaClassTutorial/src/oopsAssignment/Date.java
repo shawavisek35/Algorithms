@@ -17,11 +17,18 @@ public class Date {
 	//Parameterized constructor
 	Date(int day, int month, int year)
 	{
-		if(day>0 && day<32 && month>0 && month<=12 && year>0)
+		if(month>=1 && month<=12 && year>0)
 		{
-			this.day = day;
-			this.month = month;
-			this.year = year;
+			if(day <= noOfDays(month, year))
+			{
+				this.day = day;
+				this.month = month;
+				this.year = year;
+			}
+			else {
+				System.out.println("Please Enter a valid date");
+			}
+			
 		}
 		else {
 			System.out.println("Please enter a valid date........");
@@ -47,7 +54,7 @@ public class Date {
 	//mutator methods
 	public void setDay(int day)
 	{
-		if(day>0 && day<32)
+		if(day <= noOfDays(this.month, this.year))
 		{
 			this.day = day;
 		}
@@ -70,7 +77,7 @@ public class Date {
 	}
 	public void setYear(int year)
 	{
-		if(year>0 && year<=365)
+		if(year>=1)
 		{
 			this.year = year;	
 		}
@@ -91,7 +98,7 @@ public class Date {
 	
 	private int noOfDays(int month, int year)
 	{
-		if(month==1 || month==3 || month==5 || month==7 || month==10 || month==12)
+		if(month==1 || month==3 || month==5 || month==7 || month==8 || month==10 || month==12)
 		{
 			return 31;
 		}
@@ -215,11 +222,8 @@ public class Date {
 				}
 			}
 		}
+		
 	}
-}
-
-class Driver
-{
 	public static void main(String args[])
 	{
 		Scanner input = new Scanner(System.in);
@@ -249,7 +253,7 @@ class Driver
 			System.out.println("Two dates are not equal.....");
 		}
 		
-		System.out.println("Now You will see a magin the date will be changed as per your command........");
+		System.out.println("Now You will see a magic the date will be changed as per your command........");
 		System.out.println("Your current date is : "+d1.toString());
 		System.out.println("Press 1 for going ahead in the future or press other number to go in the past...");
 		
@@ -261,4 +265,38 @@ class Driver
 		
 		input.close();
 	}
+	
 }
+
+class Driver
+{
+	
+}
+
+/*
+  	Output =>
+  	Enter the day1 : 
+	3
+	Enter the month1 : 
+	9
+	Enter the year1 : 
+	1999
+	Enter the day2 : 
+	30
+	Enter the month2 : 
+	8
+	Enter the year2 : 
+	2020
+	The Date you entered is....
+	Date1 : 3/9/1999
+	Date2 : 30/8/2020
+	The Difference between two dates : 9302 days.
+	Two dates are not equal.....
+	Now You will see a magic the date will be changed as per your command........
+	Your current date is : 3/9/1999
+	Press 1 for going ahead in the future or press other number to go in the past...
+	1
+	Enter the number of days you want to go ahead or back...
+	9302
+	You are now in date : 17/3/2025
+ * */

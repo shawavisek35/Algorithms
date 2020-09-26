@@ -59,3 +59,13 @@ class TestRoom {
 		input.close();
 	}
 }
+
+/*
+ * Output =>
+ * Enter the height of the room : 
+	100
+	Enter the width of the room : 
+	200
+	Enter the breadth of the room : 
+	300
+	The volume of the given room is : 6000000.0*/
