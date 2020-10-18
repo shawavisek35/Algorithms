@@ -1,5 +1,6 @@
 package java_3rd_assignment;
 import java.lang.reflect.Array;
+
 public class Stack <T>{
 	private T []arr;
 	private int max;
@@ -19,6 +20,11 @@ public class Stack <T>{
 		this.top = -1;
 		this.max = max;
 		arr = (T[])Array.newInstance(component, max);
+	}
+	
+	public int getTop()
+	{
+		return this.top;
 	}
 	
 	public boolean isEmpty()
@@ -69,19 +75,19 @@ public class Stack <T>{
 		return true;
 	}
 	
-	public void display()
+	public void display(String s)
 	{
 		if(this.isEmpty())
 		{
 			System.out.println("Stack is empty. Insert some element");
 		}
-		String s = "";
+		String s1 = "";
 		for(int i=0;i<this.top;i++)
 		{
-			s += "\t";
+			s1 += "\t";
 		}
-		s += "TOP";
-		System.out.println(s);
+		s1 += s;
+		System.out.println(s1);
 		for(int i=0;i<=this.top;i++)
 		{
 			System.out.print(this.arr[i]+"\t");

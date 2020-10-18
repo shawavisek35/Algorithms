@@ -17,10 +17,10 @@ public class LinkedList {
 	
 	public boolean insert(int data)
 	{
-//		if(search(data)!=null)
-//		{
-//			return false;
-//		}
+		if(search(data)!=null)
+		{
+			return false;
+		}
 		Node node = new Node(data);
 		if(this.head == null)
 		{
@@ -39,6 +39,10 @@ public class LinkedList {
 	
 	public Node search(int dataGiven)
 	{
+		if(this.head == null)
+		{
+			return null;
+		}
 		Node temp = this.head;
 		while(temp.next != null)
 		{

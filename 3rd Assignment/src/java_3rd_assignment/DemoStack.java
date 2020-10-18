@@ -45,7 +45,7 @@ public class DemoStack {
 					break;
 				}
 				case 4: {
-					st.display();
+					st.display("TOP");
 					break;
 				}
 				case 5: {
