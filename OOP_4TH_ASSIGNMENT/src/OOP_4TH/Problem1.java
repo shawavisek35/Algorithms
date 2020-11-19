@@ -20,3 +20,12 @@ public class Problem1 {
 	}
 
 }
+
+/*
+ * Output => 
+ * 	Enter 1st value : 
+	10
+	Enter 2nd value : 
+	0
+	Cannot be divided by zero
+*/

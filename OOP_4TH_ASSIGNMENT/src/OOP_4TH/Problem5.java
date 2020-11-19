@@ -17,3 +17,9 @@ public class Problem5 {
 	}
 
 }
+
+/*
+ * Output => 
+ * 	java.lang.NullPointerExceptions contains null value so .toString() method cannot be used
+	Code execution completed finally
+*/

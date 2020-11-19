@@ -35,3 +35,14 @@ public class DemoMathException {
 	}
 
 }
+
+/*
+ * Output =>
+ * 	Enter a number : 
+	101
+	Number must not be greater than 100
+	
+	Enter a number : 
+	0
+	Number must not be lass than 1
+*/

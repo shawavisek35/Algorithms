@@ -19,3 +19,8 @@ public class Problem2 {
 	}
 
 }
+
+/*
+ * Output => 
+ * Cannot assign value to the array index 15 which is out of bound
+ */

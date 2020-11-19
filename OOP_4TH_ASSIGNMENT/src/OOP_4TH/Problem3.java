@@ -16,9 +16,14 @@ public class Problem3 {
 				throw new ArrayIndexOutOfBoundsException();
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Array index out of bound");
+			System.out.println(e);
 		}
 
 	}
 
 }
+
+/*
+ * Output => 
+ * java.lang.ArrayIndexOutOfBoundsException
+ */
