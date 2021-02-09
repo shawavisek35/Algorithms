@@ -57,6 +57,8 @@ public class FootballPlayer {
         return height.convertHeight();
     }
 
+    public String getHeight2() { return height.toString(); }
+
     //setter methods
     public void setName(String name) {
         this.name = name;

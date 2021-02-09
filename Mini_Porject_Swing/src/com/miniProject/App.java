@@ -3,48 +3,27 @@ import java.util.Scanner;
 import Model.*;
 
 public class App {
+
+    static void DisplayTallestPlayer(FootballPlayer []players)
+    {
+        int i;
+        for(i=0;i< players.length;i++)
+        {
+            try{
+                System.out.println(players[i].getName()+" is the tallest with a height " + players[i].getHeight2());
+            }
+            catch (Exception e){
+                System.exit(0);
+            }
+
+        }
+    }
     public static void main(String []args)
     {
-        Scanner input = new Scanner(System.in);
 
         Model newModel;
-        newModel = new Model(
-                new FootballPlayer(
-                        1,
-                        65,
-                        "Ronaldo",
-                        "Mid",
-                        "New jersey",
-                        "Coolege",
-                        new Height(
-                                6,
-                                7
-                        )
-                ),
-                new FootballPlayer(
-                        1,
-                        65,
-                        "Ronaldo",
-                        "Mid",
-                        "New jersey",
-                        "Coolege",
-                        new Height(
-                                6,
-                                7
-                        )
-                ),
-                new FootballPlayer(
-                        1,
-                        65,
-                        "Ronaldo",
-                        "Mid",
-                        "New jersey",
-                        "Coolege",
-                        new Height(
-                                6,
-                                7
-                        )
-                )
-        );
+        newModel = new Model();
+
+        DisplayTallestPlayer(newModel.findTallestPlayer());
     }
 }

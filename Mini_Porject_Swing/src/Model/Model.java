@@ -1,28 +1,36 @@
 package Model;
 
-public class Model {
-    private FootballPlayer player1, player2, player3;
+import java.lang.reflect.Array;
 
-    public Model(FootballPlayer player1, FootballPlayer player2, FootballPlayer player3)
+public class Model {
+    private FootballPlayer []playerList = new FootballPlayer[3];
+
+
+    public Model()
     {
-        this.player1 = player1;
-        this.player2 = player2;
-        this.player3 = player3;
+        this.playerList[0] = new FootballPlayer(1,65,"Ronaldo", "X", "World","school",new Height(6,7));
+        this.playerList[1] = new FootballPlayer(2,60,"Neymar", "Y", "World","school",new Height(6,7));
+        this.playerList[2] = new FootballPlayer(3,66,"Messi", "Z", "World","school",new Height(6,7));
     }
 
-    public String findTallestPlayer()
+    public FootballPlayer[] findTallestPlayer()
     {
-        if(player1.getHeight()>player2.getHeight() && player1.getHeight()>player3.getHeight())
+        FootballPlayer []tallestPlayer = new FootballPlayer[20];
+        FootballPlayer currentPlayer = this.playerList[0];
+        int i,j=0;
+        for(i=1;i<3;i++)
         {
-            return player1.getName()+" is the tallest.";
+            if(this.playerList[i].getHeight()>currentPlayer.getHeight())
+            {
+                currentPlayer = this.playerList[i];
+            }
+            else if(this.playerList[i].getHeight()==currentPlayer.getHeight())
+            {
+                tallestPlayer[j] = playerList[i];
+                j++;
+            }
         }
-        else if(player2.getHeight()>player3.getHeight())
-        {
-            return player2.getName()+" is the tallest.";
-        }
-        else{
-            return player3.getName()+" is the tallest.";
-        }
-
+        tallestPlayer[j] = currentPlayer;
+        return tallestPlayer;
     }
 }
