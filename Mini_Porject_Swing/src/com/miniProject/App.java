@@ -26,10 +26,10 @@ public class App {
         newModel = new Model();
 
         //Displaying information about offensive line
-        newModel.displayOffensiveLine();
+//        newModel.displayOffensiveLine();
 
         //Average Weight of the offensive Line
-        newModel.averageWeightOffensiveLine();
+//        newModel.averageWeightOffensiveLine();
 
 //        DisplayTallestPlayer(newModel.findTallestPlayer());
     }
