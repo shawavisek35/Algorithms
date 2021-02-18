@@ -4,6 +4,7 @@ import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FootballPlayerData implements TableData {
     private ArrayList<FootballPlayer> players;
@@ -16,9 +17,9 @@ public class FootballPlayerData implements TableData {
     public void ReadPlayersFromXML()
     {
         try{
-            FootballPlayer fp = new FootballPlayer();
-            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream("")));
-            while(fp!=null)
+            FootballPlayer fp;
+            XMLDecoder decoder = new XMLDecoder(new BufferedInputStream(new FileInputStream("/home/avisek/Desktop/work/Algorithms/Mini_Porject_Swing/src/Model/FootballPlayerTable.xml")));
+            while(true)
             {
                 try{
                     fp = (FootballPlayer) decoder.readObject();
@@ -45,12 +46,20 @@ public class FootballPlayerData implements TableData {
 
     @Override
     public ArrayList<String> getHeaders() {
+
         return players.get(0).getAttributeNames();
     }
 
     @Override
     public ArrayList<String> getLine(int n) {
-        return players.get(n).getAttributes();
+        String []s = players.get(n).toString().split(" ");
+        ArrayList <String> ars = new ArrayList<>();
+        for(int i=0;i<s.length;i++)
+        {
+            ars.add(s[i]);
+        }
+
+        return ars;
     }
 
     @Override

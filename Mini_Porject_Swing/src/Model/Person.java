@@ -70,7 +70,7 @@ public class Person {
     @Override
     public String toString()
     {
-        final String s = name + ", " + String.valueOf(weight) + ", " + height.toString() + ", " + hometown + ", " + highSchool;
+        final String s = name + " " + height.toString() + " " + String.valueOf(weight) + " " + hometown + " " + highSchool;
         return s;
     }
 }

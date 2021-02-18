@@ -31,14 +31,15 @@ public class Model {
         this.displayArray(fpData.getHeaders());
         this.displayArray(fpData.getLine(4));
         System.out.println("=============================================================");
-        this.displayArray(fpData.getHeaders()); this.displayArray(fpData.getLine(121));
+        this.displayArray(fpData.getHeaders());
+        this.displayArray(fpData.getLine(121));
         System.out.println("=============================================================");
         this.displayArrayOfArrays(fpData.getLines(70, 72));
         System.out.println("=============================================================");
         this.displayArrayOfArrays(fpData.getLines(100, 101));
         System.out.println("=============================================================");
         System.out.println("=============================================================");
-        System.out.println("the table size is "+ fpData.getTable().size());
+        //System.out.println("the table size is "+ fpData.getTable().size());
     }
 
     public void displayArrayOfArrays(ArrayList<ArrayList<String>> manyLines)

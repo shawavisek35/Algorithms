@@ -9,18 +9,18 @@ public class FootballPlayer extends Person implements TableMember{
     private ArrayList<String> AttributeNames = new ArrayList<>();
 
     //parameterised constructor
-    public FootballPlayer(int number, int weight, String name, String position, String hometown, String highSchool, Height height) {
+    public FootballPlayer(Height height, String highSchool, String hometown, String name, int number, String position, int weight) {
         super(weight, name, hometown, highSchool, height);
         this.number = number;
         this.position = position;
 
-        AttributeNames.add("name");
-        AttributeNames.add("height");
-        AttributeNames.add("weight");
-        AttributeNames.add("hometown");
-        AttributeNames.add("highSchool");
         AttributeNames.add("number");
-        AttributeNames.add("position");
+        AttributeNames.add("Position");
+        AttributeNames.add("Name");
+        AttributeNames.add("Height");
+        AttributeNames.add("Weight");
+        AttributeNames.add("Hometown");
+        AttributeNames.add("HighSchool");
 
         Attributes.add(name);
         Attributes.add(height.toString());
@@ -35,6 +35,13 @@ public class FootballPlayer extends Person implements TableMember{
         super();
         this.number=1;
         this.position = "Center";
+        AttributeNames.add("Number");
+        AttributeNames.add("Position");
+        AttributeNames.add("Name");
+        AttributeNames.add("Height");
+        AttributeNames.add("Weight");
+        AttributeNames.add("Hometown");
+        AttributeNames.add("HighSchool");
     }
 
     //getter methods
@@ -60,8 +67,8 @@ public class FootballPlayer extends Person implements TableMember{
     @Override
     public String toString()
     {
-        final String s = String.valueOf(number)+", "+position;
-        return s;
+        final String s = String.valueOf(number)+" "+position;
+        return s+" "+super.toString();
     }
 
 
