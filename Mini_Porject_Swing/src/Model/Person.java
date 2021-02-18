@@ -13,6 +13,15 @@ public class Person {
         this.height = height;
     }
 
+    public Person()
+    {
+        this.name="A";
+        this.hometown="World";
+        this.height = new Height(5,7);
+        this.highSchool="SJV";
+        this.weight=75;
+    }
+
     //Getter methods
     public int getWeight() {
         return weight;

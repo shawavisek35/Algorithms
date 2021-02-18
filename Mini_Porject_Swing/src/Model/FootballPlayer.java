@@ -31,6 +31,12 @@ public class FootballPlayer extends Person implements TableMember{
         Attributes.add(position);
     }
 
+    public FootballPlayer() {
+        super();
+        this.number=1;
+        this.position = "Center";
+    }
+
     //getter methods
 
     public int getNumber() {
