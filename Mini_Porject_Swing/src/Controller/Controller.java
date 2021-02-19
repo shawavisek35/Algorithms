@@ -13,4 +13,9 @@ public class Controller {
         v.CenterInitialSetup(m.getFpData().getLinesBeingDisplayed(), m.getFpData().getHeaders().size());
         v.CenterUpdate(m.getFpData().getLines(m.getFpData().getFirstLineToDisplay(), m.getFpData().getLastLineToDisplay()),m.getFpData().getHeaders());
     }
+
+    private void addScrolling()
+    {
+
+    }
 }

@@ -8,10 +8,13 @@ import java.util.Arrays;
 
 public class FootballPlayerData implements TableData, Displayable {
     private ArrayList<FootballPlayer> players;
+    private int firstLine, lastLine;
 
     public FootballPlayerData()
     {
-            players = new ArrayList<>();
+        firstLine = 0;
+        lastLine = 20;
+        players = new ArrayList<>();
     }
 
     public void ReadPlayersFromXML()
@@ -76,27 +79,31 @@ public class FootballPlayerData implements TableData, Displayable {
     //Displayable Methods
     @Override
     public int getFirstLineToDisplay() {
-        return 0;
+
+        return firstLine;
     }
 
     @Override
     public int getLineToHighlight() {
+
         return 0;
     }
 
     @Override
     public int getLastLineToDisplay() {
-        return players.size()-1;
+
+        return lastLine;
     }
 
     @Override
     public int getLinesBeingDisplayed() {
-        return players.size();
+
+        return lastLine;
     }
 
     @Override
     public void setFirstLineToDisplay(int firstLine) {
-
+        this.firstLine = firstLine;
     }
 
     @Override
@@ -106,7 +113,7 @@ public class FootballPlayerData implements TableData, Displayable {
 
     @Override
     public void setLastLineToDisplay(int lastLine) {
-
+        this.lastLine = lastLine;
     }
 
     @Override

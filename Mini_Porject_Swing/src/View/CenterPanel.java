@@ -6,19 +6,21 @@ import javax.swing.*;
 public class CenterPanel {
 
     JFrame f;
+    private int buttonHeight, buttonWidth;
     public CenterPanel(ArrayList<String> arr)
     {
         //Drawing Columns
-//        int i=0;
+        int i=0;
         f = new JFrame();
-//        for(String st : arr)
-//        {
-//            JButton b = new JButton(st);
-//            f.add(b);
-//        }
-//        f.setLayout(new GridLayout(1,arr.size()));
-//        f.setSize(500,500);
-//        f.setVisible(true);
+        for(String st : arr)
+        {
+            JButton b = new JButton(st);
+            b.setBackground(Color.CYAN);
+            f.add(b);
+        }
+        f.setLayout(new GridLayout(1,arr.size()));
+        f.setSize(700,700);
+        f.setVisible(true);
     }
 
     public CenterPanel()
@@ -37,7 +39,7 @@ public class CenterPanel {
                 f.add(b);
             }
         }
-        f.setLayout(new GridLayout(rows,cols));
+        f.setLayout(new GridLayout(0,cols));
         f.setSize(700,700);
         f.setVisible(true);
     }

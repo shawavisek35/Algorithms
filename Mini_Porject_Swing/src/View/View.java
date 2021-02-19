@@ -8,12 +8,12 @@ public class View {
     FootballPlayer fp = new FootballPlayer();
     public View()
     {
-        CenterPanel sc = new CenterPanel(fp.getAttributeNames());
+
     }
 
     public void CenterInitialSetup(int rows, int cols)
     {
-        CenterPanel cp = new CenterPanel();
+        CenterPanel cp = new CenterPanel(fp.getAttributeNames());
         cp.DisplayPanel(rows, cols);
     }
 
