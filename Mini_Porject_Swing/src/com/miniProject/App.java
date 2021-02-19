@@ -1,6 +1,10 @@
 package com.miniProject;
+import java.awt.*;
 import java.util.Scanner;
+
+import Controller.Controller;
 import Model.*;
+import View.*;
 
 public class App {
 
@@ -22,8 +26,9 @@ public class App {
     public static void main(String []args)
     {
 
-        Model newModel;
-        newModel = new Model();
+        Model model = new Model();
+        View view = new View();
+        Controller controller = new Controller(model, view);
 
         //Displaying information about offensive line
 //        newModel.displayOffensiveLine();

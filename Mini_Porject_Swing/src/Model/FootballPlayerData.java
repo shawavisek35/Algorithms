@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FootballPlayerData implements TableData {
+public class FootballPlayerData implements TableData, Displayable {
     private ArrayList<FootballPlayer> players;
 
     public FootballPlayerData()
@@ -34,6 +34,7 @@ public class FootballPlayerData implements TableData {
         }
     }
 
+    //TableData methods
     @Override
     public void LoadTable() {
 
@@ -70,5 +71,46 @@ public class FootballPlayerData implements TableData {
             result.add(getLine(i));
         }
         return result;
+    }
+
+    //Displayable Methods
+    @Override
+    public int getFirstLineToDisplay() {
+        return 0;
+    }
+
+    @Override
+    public int getLineToHighlight() {
+        return 0;
+    }
+
+    @Override
+    public int getLastLineToDisplay() {
+        return players.size()-1;
+    }
+
+    @Override
+    public int getLinesBeingDisplayed() {
+        return players.size();
+    }
+
+    @Override
+    public void setFirstLineToDisplay(int firstLine) {
+
+    }
+
+    @Override
+    public void setLineToHighlight(int highlightedLine) {
+
+    }
+
+    @Override
+    public void setLastLineToDisplay(int lastLine) {
+
+    }
+
+    @Override
+    public void setLinesBeingDisplayed(int noOfLines) {
+
     }
 }
