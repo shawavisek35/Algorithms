@@ -4,16 +4,18 @@ import Model.FootballPlayer;
 import Model.FootballPlayerData;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class InitialPanel {
     JPanel p;
     CenterPanel cp;
     FootballPlayer fp;
 
-    public InitialPanel(int rows, int cols, FootballPlayerData f)
+    public InitialPanel(ArrayList<ArrayList<String>> lines, ArrayList<String> headers, FootballPlayerData f)
     {
         fp = new FootballPlayer();
-        cp = new CenterPanel(rows,cols,f);
+        cp = new CenterPanel(lines,headers,f);
+
     }
 
     public JPanel getInitialPanel()
