@@ -10,6 +10,7 @@ import javax.swing.*;
 public class CenterPanel implements MouseWheelListener {
 
     JPanel p;
+    JFrame jf;
     FootballPlayerData fp;
     int firstLine, lastLine, noOfLines;
     ArrayList<ArrayList<String>> lines;
@@ -22,11 +23,14 @@ public class CenterPanel implements MouseWheelListener {
         noOfLines = f.getLinesBeingDisplayed();
         this.lines = lines;
         this.headers = headers;
+        jf = new JFrame();
         //Drawing Columns
-        createCentralPanel();
+        jf.add(createCentralPanel());
+        jf.setSize(800, 800);
+        jf.setVisible(true);
     }
 
-    public void createCentralPanel()
+    public JPanel createCentralPanel()
     {
         int i=0;
         p = new JPanel();
@@ -49,6 +53,7 @@ public class CenterPanel implements MouseWheelListener {
         p.addMouseWheelListener(this);
         p.setLayout(new GridLayout(0,headers.size()));
         p.setVisible(true);
+        return p;
     }
 
     public CenterPanel()
@@ -92,9 +97,22 @@ public class CenterPanel implements MouseWheelListener {
     @Override
     public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
         int units = mouseWheelEvent.getUnitsToScroll();
-        firstLine += units;
-        lastLine += units;
-        p.revalidate();
+        if(firstLine+units<=0 || lastLine+units>=noOfLines)
+        {
+            firstLine = firstLine;
+            lastLine = lastLine;
+        }
+        else{
+            firstLine += units;
+            lastLine += units;
+        }
+        jf.getContentPane().removeAll();
+
+        p = createCentralPanel();
+        jf.getContentPane().add(p);
+        jf.revalidate();
+        jf.pack();
+
 
     }
 }

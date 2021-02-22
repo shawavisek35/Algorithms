@@ -13,7 +13,7 @@ public class View {
 
     public void CenterInitialSetup(int rows, int cols, FootballPlayerData fpdata)
     {
-        InitialFrame f = new InitialFrame(fpdata.getLines(fpdata.getFirstLineToDisplay(), fpdata.getLastLineToDisplay()), fpdata.getHeaders(), fpdata);
+        CenterPanel f = new CenterPanel(fpdata.getLines(fpdata.getFirstLineToDisplay(), fpdata.getLastLineToDisplay()), fpdata.getHeaders(), fpdata);
         this.rows = rows;
         this.cols = cols;
     }
