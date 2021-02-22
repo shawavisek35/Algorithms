@@ -8,12 +8,13 @@ import java.util.Arrays;
 
 public class FootballPlayerData implements TableData, Displayable {
     private ArrayList<FootballPlayer> players;
-    private int firstLine, lastLine;
+    private int firstLine, lastLine, noOfLines;
 
     public FootballPlayerData()
     {
         firstLine = 0;
         lastLine = 20;
+        noOfLines = 20;
         players = new ArrayList<>();
     }
 
@@ -35,6 +36,7 @@ public class FootballPlayerData implements TableData, Displayable {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        this.noOfLines=players.size()-2;
     }
 
     //TableData methods
@@ -56,7 +58,7 @@ public class FootballPlayerData implements TableData, Displayable {
 
     @Override
     public ArrayList<String> getLine(int n) {
-        String []s = players.get(n).toString().split(" ");
+        String []s = players.get(n).toString().split(";");
         ArrayList <String> ars = new ArrayList<>();
         for(int i=0;i<s.length;i++)
         {
@@ -98,7 +100,7 @@ public class FootballPlayerData implements TableData, Displayable {
     @Override
     public int getLinesBeingDisplayed() {
 
-        return lastLine;
+        return noOfLines;
     }
 
     @Override
@@ -118,6 +120,6 @@ public class FootballPlayerData implements TableData, Displayable {
 
     @Override
     public void setLinesBeingDisplayed(int noOfLines) {
-
+        this.noOfLines = noOfLines;
     }
 }

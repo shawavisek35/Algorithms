@@ -10,7 +10,7 @@ public class Controller {
     {
         this.m = m;
         this.v = v;
-        v.CenterInitialSetup(m.getFpData().getLinesBeingDisplayed(), m.getFpData().getHeaders().size());
+        v.CenterInitialSetup(m.getFpData().getLinesBeingDisplayed(), m.getFpData().getHeaders().size(), m.getFpData());
         v.CenterUpdate(m.getFpData().getLines(m.getFpData().getFirstLineToDisplay(), m.getFpData().getLastLineToDisplay()),m.getFpData().getHeaders());
     }
 

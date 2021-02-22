@@ -67,8 +67,8 @@ public class FootballPlayer extends Person implements TableMember{
     @Override
     public String toString()
     {
-        final String s = String.valueOf(number)+" "+position;
-        return s+" "+super.toString();
+        final String s = String.valueOf(number)+";"+position;
+        return s+";"+super.toString();
     }
 
 
