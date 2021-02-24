@@ -2,19 +2,22 @@ package View;
 
 import Model.FootballPlayerData;
 import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
 
-public class CenterPanel implements MouseWheelListener {
+public class CenterPanel implements ActionListener {
 
     JPanel p;
-    JFrame jf;
     FootballPlayerData fp;
     int firstLine, lastLine, noOfLines;
     ArrayList<ArrayList<String>> lines;
     ArrayList<String> headers;
+    HashMap<String, JButton> buttons;
     public CenterPanel(ArrayList<ArrayList<String>> lines, ArrayList<String> headers, FootballPlayerData f)
     {
         fp = f;
@@ -23,38 +26,57 @@ public class CenterPanel implements MouseWheelListener {
         noOfLines = f.getLinesBeingDisplayed();
         this.lines = lines;
         this.headers = headers;
-        jf = new JFrame();
+        buttons = new HashMap<String, JButton>();
         //Drawing Columns
-        jf.add(createCentralPanel());
-        jf.setSize(800, 800);
-        jf.setVisible(true);
-    }
-
-    public JPanel createCentralPanel()
-    {
         int i=0;
         p = new JPanel();
         for(String st : headers)
         {
             JButton b = new JButton(st);
+            buttons.put(st, b);
+            b.addActionListener(this);
             b.setBackground(Color.CYAN);
             p.add(b);
         }
 
-//        for(ArrayList<String> a : f.getLines(f.getFirstLineToDisplay(),f.getLastLineToDisplay()))
-//        {
-//            for(String s : a)
-//            {
-//                JButton b = new JButton(s);
-//                p.add(b);
-//            }
-//        }
-        DisplayTable();
-        p.addMouseWheelListener(this);
+        //Displaying data
+        for(ArrayList<String> a : lines)
+        {
+            for(String s : a)
+            {
+                JButton b = new JButton(s);
+                p.add(b);
+            }
+        }
         p.setLayout(new GridLayout(0,headers.size()));
         p.setVisible(true);
-        return p;
     }
+
+//    public JPanel createCentralPanel()
+//    {
+//        int i=0;
+//        p = new JPanel();
+//        for(String st : headers)
+//        {
+//            JButton b = new JButton(st);
+//            b.setBackground(Color.CYAN);
+//            p.add(b);
+//        }
+//
+////        for(ArrayList<String> a : f.getLines(f.getFirstLineToDisplay(),f.getLastLineToDisplay()))
+////        {
+////            for(String s : a)
+////            {
+////                JButton b = new JButton(s);
+////                p.add(b);
+////            }
+////        }
+//        DisplayTable();
+//        p.addMouseWheelListener(this);
+//        p.setLayout(new GridLayout(0,headers.size()));
+//        p.setVisible(true);
+//        return p;
+//    }
 
     public CenterPanel()
     {
@@ -76,44 +98,54 @@ public class CenterPanel implements MouseWheelListener {
 //        return p;
 //    }
 
-    public void DisplayTable()
-    {
-        for(ArrayList<String> a : fp.getLines(firstLine,lastLine))
-        {
-            for(String s : a)
-            {
-                JButton b = new JButton(s);
-                p.add(b);
-            }
-        }
-    }
+//    public void DisplayTable()
+//    {
+//        for(ArrayList<String> a : fp.getLines(firstLine,lastLine))
+//        {
+//            for(String s : a)
+//            {
+//                JButton b = new JButton(s);
+//                p.add(b);
+//            }
+//        }
+//    }
 
     public JPanel getCenterPanel()
     {
         return p;
     }
 
-
     @Override
-    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
-        int units = mouseWheelEvent.getUnitsToScroll();
-        if(firstLine+units<=0 || lastLine+units>=noOfLines)
+    public void actionPerformed(ActionEvent actionEvent) {
+        String s = actionEvent.getActionCommand();
+        for(Map.Entry m : buttons.entrySet())
         {
-            firstLine = firstLine;
-            lastLine = lastLine;
+            buttons.get(m.getKey()).setBackground(Color.CYAN);
         }
-        else{
-            firstLine += units;
-            lastLine += units;
-        }
-        jf.getContentPane().removeAll();
-
-        p = createCentralPanel();
-        jf.getContentPane().add(p);
-        jf.revalidate();
-        jf.pack();
-
-
+        buttons.get(s).setBackground(Color.YELLOW);
     }
+
+
+//    @Override
+//    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+//        int units = mouseWheelEvent.getUnitsToScroll();
+//        if(firstLine+units<=0 || lastLine+units>=noOfLines)
+//        {
+//            firstLine = firstLine;
+//            lastLine = lastLine;
+//        }
+//        else{
+//            firstLine += units;
+//            lastLine += units;
+//        }
+//        jf.getContentPane().removeAll();
+//
+//        p = createCentralPanel();
+//        jf.getContentPane().add(p);
+//        jf.revalidate();
+//        jf.pack();
+//
+//
+//    }
 }
 
