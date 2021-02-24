@@ -7,7 +7,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 
-public class InitialFrame implements MouseWheelListener{
+public class InitialFrame implements MouseWheelListener {
     JFrame f;
     InitialPanel ip;
     JPanel p;
@@ -26,38 +26,47 @@ public class InitialFrame implements MouseWheelListener{
         f = new JFrame();
         ip = new InitialPanel(lines, headers, fp);
         p = ip.getInitialPanel();
-        f.addMouseWheelListener(this);
+        p.addMouseWheelListener(this);
         f.add(p);
         f.setSize(800,800);
         f.setVisible(true);
 
     }
 
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
-        int units = mouseWheelEvent.getUnitsToScroll();
-        if(firstLine+units<=-3 || lastLine+units>=noOfLines)
-        {
-            firstLine = firstLine;
-            lastLine = lastLine;
-        }
-        else{
-            firstLine += units;
-            lastLine += units;
-        }
-        f.getContentPane().removeAll();
-
-        ip = new InitialPanel(this.fp.getLines(firstLine, lastLine),headers, fp);
-        p = ip.getInitialPanel();
-        f.getContentPane().add(p);
-        f.revalidate();
-        f.pack();
-    }
 //    @Override
 //    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
 //        int units = mouseWheelEvent.getUnitsToScroll();
-//        CenterPanel cp = new CenterPanel(lines, headers);
-//        f.add(cp.getCenterPanel());
-//        f.setVisible(true);
+//        if(firstLine+units<=-3 || lastLine+units>=noOfLines)
+//        {
+//            firstLine = firstLine;
+//            lastLine = lastLine;
+//        }
+//        else{
+//            firstLine += units;
+//            lastLine += units;
+//        }
+//        f.getContentPane().removeAll();
+//
+//        ip = new InitialPanel(this.fp.getLines(firstLine, lastLine),headers, fp);
+//        p = ip.getInitialPanel();
+//        p.addMouseWheelListener(this);
+//        f.getContentPane().add(p);
+//        f.revalidate();
+//        f.pack();
 //    }
+
+    public InitialPanel getInitialPanel()
+    {
+        return ip;
+    }
+
+    public JFrame getFrame()
+    {
+        return f;
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent mouseWheelEvent) {
+
+    }
 }

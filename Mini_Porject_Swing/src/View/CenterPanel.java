@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
@@ -33,6 +32,7 @@ public class CenterPanel implements ActionListener {
         for(String st : headers)
         {
             JButton b = new JButton(st);
+            b.setMaximumSize(new Dimension(10,10));
             buttons.put(st, b);
             b.addActionListener(this);
             b.setBackground(Color.CYAN);
@@ -45,10 +45,12 @@ public class CenterPanel implements ActionListener {
             for(String s : a)
             {
                 JButton b = new JButton(s);
+                b.setMaximumSize(new Dimension(10,10));
                 p.add(b);
             }
         }
         p.setLayout(new GridLayout(0,headers.size()));
+        p.setSize(900,900);
         p.setVisible(true);
     }
 

@@ -27,4 +27,9 @@ public class InitialPanel {
 //        p = cp.DisplayPanel(fp.getLines(rows,cols),fp.getHeaders());
 //        return p;
 //    }
+
+    public JPanel getCentralPanel()
+    {
+        return cp.getCenterPanel();
+    }
 }
