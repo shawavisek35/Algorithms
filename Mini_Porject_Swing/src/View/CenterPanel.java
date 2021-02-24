@@ -17,9 +17,18 @@ public class CenterPanel implements ActionListener {
     ArrayList<ArrayList<String>> lines;
     ArrayList<String> headers;
     HashMap<String, JButton> buttons;
+    HashMap<String, Integer> sortFields;
     public CenterPanel(ArrayList<ArrayList<String>> lines, ArrayList<String> headers, FootballPlayerData f)
     {
         fp = f;
+        sortFields = new HashMap<String, Integer>();
+        sortFields.put("Number", 1);
+        sortFields.put("Position", 2);
+        sortFields.put("Name", 3);
+        sortFields.put("Height", 4);
+        sortFields.put("Weight", 5);
+        sortFields.put("Hometown", 6);
+        sortFields.put("HighSchool", 7);
         firstLine = f.getFirstLineToDisplay();
         lastLine = f.getLastLineToDisplay();
         noOfLines = f.getLinesBeingDisplayed();
@@ -120,6 +129,7 @@ public class CenterPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String s = actionEvent.getActionCommand();
+        fp.sort(1, sortFields.get(s));
         for(Map.Entry m : buttons.entrySet())
         {
             buttons.get(m.getKey()).setBackground(Color.CYAN);

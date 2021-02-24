@@ -3,19 +3,18 @@ package Model;
 import java.beans.XMLDecoder;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 
-public class FootballPlayerData implements TableData, Displayable {
+public class FootballPlayerData implements TableData, Displayable, Sortable {
     private ArrayList<FootballPlayer> players;
-    private int firstLine, lastLine, noOfLines;
+    private int firstLine, lastLine, noOfLines, sortType, sortField;
 
     public FootballPlayerData()
     {
         firstLine = 0;
         lastLine = 20;
         noOfLines = 20;
-        players = new ArrayList<>();
+        players = new ArrayList<FootballPlayer>();
     }
 
     public void ReadPlayersFromXML()
@@ -121,5 +120,105 @@ public class FootballPlayerData implements TableData, Displayable {
     @Override
     public void setLinesBeingDisplayed(int noOfLines) {
         this.noOfLines = noOfLines;
+    }
+
+    @Override
+    public void sort(int sortType, int sortField) {
+        if(sortType == 1)
+        {
+            if(sortField == 1)
+            {
+                Collections.sort(players, new SortByNumber());
+            }
+            else if(sortField == 2)
+            {
+                Collections.sort(players, new SortByPosition());
+            }
+            else if(sortField == 3)
+            {
+                Collections.sort(players, new SortByName());
+            }
+            else if(sortField == 4)
+            {
+                Collections.sort(players, new SortByHeight());
+            }
+            else if(sortField == 5)
+            {
+                Collections.sort(players, new SortByWeight());
+            }
+            else if(sortField == 6)
+            {
+                Collections.sort(players, new SortByHometown());
+            }
+            else{
+                Collections.sort(players, new SortByHighSchool());
+            }
+        }
+    }
+
+    @Override
+    public int getSort() {
+        return 0;
+    }
+
+    @Override
+    public void setSortType(int sortType) {
+        this.sortType = sortType;
+    }
+
+    @Override
+    public void setSortField(int sortField) {
+        this.sortField = sortField;
+    }
+
+
+}
+class SortByName implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getName().compareTo(f2.getName());
+    }
+}
+class SortByNumber implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getNumber() - (f2.getNumber());
+    }
+}
+class SortByHeight implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getHeight().compareTo(f2.getHeight());
+    }
+}
+class SortByWeight implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getWeight() - (f2.getWeight());
+    }
+}
+class SortByHometown implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getHometown().compareTo(f2.getHometown());
+    }
+}
+class SortByHighSchool implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getHighSchool().compareTo(f2.getHighSchool());
+    }
+}
+class SortByPosition implements Comparator<FootballPlayer> {
+
+    @Override
+    public int compare(FootballPlayer f1, FootballPlayer f2) {
+        return f1.getPosition().compareTo(f2.getPosition());
     }
 }
