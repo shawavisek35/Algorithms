@@ -12,8 +12,10 @@ public class FootballPlayerData implements TableData, Displayable, Sortable {
     public FootballPlayerData()
     {
         firstLine = 0;
-        lastLine = 20;
+        lastLine = 30;
         noOfLines = 20;
+        sortType = 1;
+        sortField = 1;
         players = new ArrayList<FootballPlayer>();
     }
 
@@ -36,6 +38,7 @@ public class FootballPlayerData implements TableData, Displayable, Sortable {
             ex.printStackTrace();
         }
         this.noOfLines=players.size()-2;
+        sort();
     }
 
     //TableData methods
@@ -123,8 +126,14 @@ public class FootballPlayerData implements TableData, Displayable, Sortable {
     }
 
     @Override
-    public void sort(int sortType, int sortField) {
+    public void sort() {
         if(sortType == 1)
+        {
+            selectionSort();
+        }
+
+
+        else if(sortType == 2)
         {
             if(sortField == 1)
             {
@@ -153,6 +162,39 @@ public class FootballPlayerData implements TableData, Displayable, Sortable {
             else{
                 Collections.sort(players, new SortByHighSchool());
             }
+
+        }
+        else{
+            FootballPlayer[] arr = new FootballPlayer[players.size()];
+            arr = players.toArray(arr);
+            if(sortField == 1)
+            {
+                Arrays.sort(arr, new SortByNumber());
+            }
+            else if(sortField == 2)
+            {
+                Arrays.sort(arr, new SortByPosition());
+            }
+            else if(sortField == 3)
+            {
+                Arrays.sort(arr, new SortByName());
+            }
+            else if(sortField == 4)
+            {
+                Arrays.sort(arr, new SortByHeight());
+            }
+            else if(sortField == 5)
+            {
+                Arrays.sort(arr, new SortByWeight());
+            }
+            else if(sortField == 6)
+            {
+                Arrays.sort(arr, new SortByHometown());
+            }
+            else{
+                Arrays.sort(arr, new SortByHighSchool());
+            }
+            players = new ArrayList<FootballPlayer>(Arrays.asList(arr));
         }
     }
 
@@ -171,8 +213,76 @@ public class FootballPlayerData implements TableData, Displayable, Sortable {
         this.sortField = sortField;
     }
 
+    //Selection sort
+    public void selectionSort(){
+        for (int i = 0; i < players.size() - 1; i++)
+        {
+            int index = i;
+            if(sortField == 1)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(j).getNumber() < players.get(index).getNumber()){
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else if(sortField == 2)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(index).getPosition().compareTo(players.get(j).getPosition())>0) {
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else if(sortField == 3)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(index).getName().compareTo(players.get(j).getName())>0) {
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else if(sortField == 4)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if ((players.get(index).getHeight2() > players.get(j).getHeight2())) {
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else if(sortField == 5)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(j).getWeight() < players.get(index).getWeight()){
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else if(sortField == 6)
+            {
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(index).getHometown().compareTo(players.get(j).getHometown())>0){
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            else{
+                for (int j = i + 1; j < players.size(); j++){
+                    if (players.get(index).getHighSchool().compareTo(players.get(j).getHighSchool())>0){
+                        index = j;//searching for lowest index
+                    }
+                }
+            }
+            FootballPlayer footbp = players.get(index);
+            players.set(index,players.get(i));
+            players.set(i,footbp);
+        }
+    }
+
 
 }
+
+//Sorting Comparators
 class SortByName implements Comparator<FootballPlayer> {
 
     @Override
@@ -222,3 +332,4 @@ class SortByPosition implements Comparator<FootballPlayer> {
         return f1.getPosition().compareTo(f2.getPosition());
     }
 }
+

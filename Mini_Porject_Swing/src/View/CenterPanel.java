@@ -21,6 +21,9 @@ public class CenterPanel implements ActionListener {
     public CenterPanel(ArrayList<ArrayList<String>> lines, ArrayList<String> headers, FootballPlayerData f)
     {
         fp = f;
+        fp.sort();
+        GridBagConstraints gc = new GridBagConstraints();
+        gc.gridwidth = 4;
         sortFields = new HashMap<String, Integer>();
         sortFields.put("Number", 1);
         sortFields.put("Position", 2);
@@ -41,7 +44,7 @@ public class CenterPanel implements ActionListener {
         for(String st : headers)
         {
             JButton b = new JButton(st);
-            b.setMaximumSize(new Dimension(10,10));
+            b.setPreferredSize(new Dimension(160,20));
             buttons.put(st, b);
             b.addActionListener(this);
             b.setBackground(Color.CYAN);
@@ -54,7 +57,7 @@ public class CenterPanel implements ActionListener {
             for(String s : a)
             {
                 JButton b = new JButton(s);
-                b.setMaximumSize(new Dimension(10,10));
+                b.setPreferredSize(new Dimension(160,20));
                 p.add(b);
             }
         }
@@ -129,7 +132,7 @@ public class CenterPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String s = actionEvent.getActionCommand();
-        fp.sort(1, sortFields.get(s));
+        fp.setSortField(sortFields.get(s));
         for(Map.Entry m : buttons.entrySet())
         {
             buttons.get(m.getKey()).setBackground(Color.CYAN);

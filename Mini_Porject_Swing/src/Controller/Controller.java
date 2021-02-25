@@ -40,6 +40,7 @@ public class Controller {
                         }
                         JPanel p = v.CenterUpdate(m.getFpData().getLines(firstLine, lastLine), m.getFpData().getHeaders());
                         p.addMouseWheelListener(this::mouseWheelMoved);
+
                     }
                 }
         );

@@ -23,12 +23,12 @@ public class InitialFrame implements MouseWheelListener {
         this.noOfLines = fp.getLinesBeingDisplayed();
         this.lines = lines;
         this.headers = headers;
-        f = new JFrame();
+        f = new JFrame("Avisek Shaw | Football Player\'s Data");
         ip = new InitialPanel(lines, headers, fp);
         p = ip.getInitialPanel();
         p.addMouseWheelListener(this);
         f.add(p);
-        f.setSize(800,800);
+        f.setSize(1080, 700);
         f.setVisible(true);
 
     }
