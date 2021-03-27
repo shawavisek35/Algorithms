@@ -29,7 +29,7 @@ public class Controller {
                     @Override
                     public void mouseWheelMoved(MouseWheelEvent me) {
                         int units = me.getUnitsToScroll();
-                        if(firstLine+units<=-3 || lastLine+units>=noOfLines)
+                        if(firstLine+units<=-3 || lastLine+units>=noOfLines+3)
                         {
                             firstLine = firstLine;
                             lastLine = lastLine;
