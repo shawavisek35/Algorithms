@@ -13,29 +13,36 @@ struct Node{
     }
 };
 
-void treeUtil(Node *root, vector<int> &ans, int v, int highest){
-    if(root == NULL){
-        return;
-    }
-
-    if(abs(v) > highest){
-        if(v>highest){
-
-            ans.push_back(root->data);
-        }
-        else{
-            ans.insert(ans.begin(), root->data);
-        }
-        highest++;
-    }
-    treeUtil(root->left, ans, v-1, highest);
-    treeUtil(root->right, ans, v+1, highest);
-    return;
-}
-
 vector<int> treeTopView(Node *root){
+    map<int, int> m;
+    queue<pair<Node *, int>> q;
     vector <int> ans;
-    treeUtil(root, ans, 0,-1);
+
+    if(root == NULL){
+        return ans;
+    }
+
+    q.push({root, 0});
+
+    while(!q.empty()){
+        Node * temp = q.front().first;
+        int h = q.front().second;
+
+        q.pop();
+        if(!m[h])
+            m[h] = temp->data;
+        if(temp->left){
+            q.push({temp->left,h-1});
+        }
+        if(temp->right){
+            q.push({temp->right, h+1});
+        }
+    }
+
+    for(auto t : m){
+        ans.push_back(t.second);
+    }
+
     return ans;
 }
 
