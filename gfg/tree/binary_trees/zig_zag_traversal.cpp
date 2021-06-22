@@ -13,28 +13,38 @@ struct Node{
     }
 };
 
-void treeUtil(Node *root, int level, vector<int> &ans){
-    if(root==NULL){
-        return;
-    }
-
-    ans.push_back(root->data);
-    if(level%2==0){
-        treeUtil(root->left, level+1, ans);
-        treeUtil(root->right, level+1, ans);
-    }
-    else{
-        treeUtil(root->right, level+1, ans);
-        treeUtil(root->left, level+1, ans);
-    }
-    return;
-}
-
 vector <int> zigzagTraversal(Node *root){
     vector<int> ans;
-    queue<Node *> q;
-    while(!q.empty()){
-        int n = q.size();
+    stack<Node *> s1;
+    stack<Node *> s2;
+    s1.push(root);
+    int level = 0;
+    while(!s1.empty()){
+        Node *temp = s1.top();
+        s1.pop();
+
+        ans.push_back(temp->data);
+
+        if(level%2 == 0){
+            if(temp->left){
+                s2.push(temp->left);
+            }
+            if(temp->right){
+                s2.push(temp->right);
+            }
+        }else{
+            if(temp->right){
+                s2.push(temp->right);
+            }
+            if(temp->left){
+                s2.push(temp->left);
+            }
+        }
+
+        if(s1.empty()){
+            level++;
+            swap(s1, s2);
+        }
     }
     return ans;
 }
