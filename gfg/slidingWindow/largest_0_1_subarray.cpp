@@ -3,19 +3,30 @@ using namespace std;
 
 int maxLen(int arr[], int N)
 {
-    int i=0,j=0,maxS = INT_MIN, sum=0;
-    for(i=0;i<N;i++){
-        if(arr[i] == 0){
-            arr[i] = -1;
-        }
-        i=0;
-        while(j<N){
-            sum += arr[j];
-            if(sum==0){
-                maxS = max(maxS, j-i+1);
+        unordered_map<int, int> m;
+        int maxL = 0;
+        long long sum = 0;
+        
+        for(int i=0;i<N;i++){
+            if(arr[i] == 0){
+                arr[i] = -1;
             }
         }
-    }
+        
+        for(int i=0;i<N;i++){
+            sum += arr[i];
+            if(sum == 0){
+                maxL = max(maxL, i+1);
+            }
+            if(m.find(sum) == m.end()){
+                m[sum] = i;
+            }
+            
+            else{
+                maxL = max(maxL, i-m[sum]);
+            }
+        }
+        return maxL;
 
     
 }
