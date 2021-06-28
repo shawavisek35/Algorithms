@@ -3,7 +3,7 @@ using namespace std;
 
 vector <int> max_of_subarrays(int arr[], int n, int k)
 {
-    int i=0,j=0;
+        int i=0,j=0;
         list<int> pq;
         vector <int> ans;
         while(j<n){
