@@ -1,36 +1,41 @@
+//binary search
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int binarySearch(int arr[], int n, int key)
-{
-    int l=0, hi = n-1,mid;
-    while(l<=hi)
-    {
-        mid = l+(hi-l)/2;
-        if(arr[mid]==key)
-        {
-            return mid;
-        }
-        else if(arr[mid]>key)
-        {
-            hi = mid-1;
-        }
-        else{
-            l = mid+1;
-        }
-    }
-    return -1;
-}
+vector <int> v;
+int binary_search(int,int,int);
 
 int main()
-{
-    int arr[100],i,n,key;
+{    
+    int key,n,a,result;
+    cout << "Enter the length of the array : ";
     cin >> n;
-    for(i=0;i<n;i++)
+    for(int i=0 ;i <n ; i++)
     {
-        cin >> arr[i];
+        cout << "Enter element at array[" << i << "] : ";
+        cin >> a;
+        v.push_back(a);
     }
+    cout << "Enter the element to find : ";
     cin >> key;
-    cout << binarySearch(arr,n,key) << "\n";
+    result = binary_search(0,v.size()-1,key);
+    cout << "Element found at : " << result << "\n";
     return 0;
 }
+
+int binary_search(int beg,int end,int key)
+{
+    int mid = (beg+end)/2;
+    if(v[mid]==key)
+    {
+        return mid;
+    }
+    
+    if(v[mid]>key)
+    {
+        binary_search(beg,mid,key);
+    }
+    else{
+        binary_search(mid+1,end,key);
+    }
