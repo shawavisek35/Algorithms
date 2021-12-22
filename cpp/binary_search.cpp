@@ -39,3 +39,4 @@ int binary_search(int beg,int end,int key)
     else{
         binary_search(mid+1,end,key);
     }
+}
