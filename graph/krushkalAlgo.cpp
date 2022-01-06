@@ -55,9 +55,9 @@ bool compareWeights(Node &a, Node &b) {
   return a.wt < b.wt;
 }
 
-void krushkalSpanning(int n, vector<Node> graph) {
+vector<Node> krushkalSpanning(int n, vector<Node> graph) {
   sort(graph.begin(), graph.end(), compareWeights);
-
+  vector<Node> mst;
   int spanCost = 0;
   DSU dsu = DSU(n);
 
@@ -68,8 +68,11 @@ void krushkalSpanning(int n, vector<Node> graph) {
 
     if(dsu.findParent(u) != dsu.findParent(v)) {
       dsu.unionBySize(u, v);
+      mst.push_back(it);
       spanCost += w;
     }
 
   }
+
+  return mst;
 }
