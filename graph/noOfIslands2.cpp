@@ -1,3 +1,5 @@
+#include<vector>
+using namespace std;
 /**
  * Definition for a point.
  * struct Point {

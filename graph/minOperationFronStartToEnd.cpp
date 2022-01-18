@@ -2,7 +2,9 @@
 //using multiplication operation and find 
 //out the minimum no. of operations
 
-#include<bits/stdc++.h>
+#include<vector>
+#include<queue>
+#include<iostream>
 using namespace std;
 
 int findMinOperation(int start, int end, vector<int> nums) {
