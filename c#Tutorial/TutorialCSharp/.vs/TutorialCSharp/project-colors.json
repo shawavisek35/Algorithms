@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "30eb1144-e22f-481e-8def-52ec87dddbd6": {
+      "ProjectGuid": "30eb1144-e22f-481e-8def-52ec87dddbd6",
+      "DisplayName": "TutorialCSharp",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

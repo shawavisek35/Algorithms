@@ -1,0 +1,15 @@
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\TutorialCSharp.exe
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\TutorialCSharp.deps.json
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\TutorialCSharp.runtimeconfig.json
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\TutorialCSharp.dll
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\ref\TutorialCSharp.dll
+D:\Algorithms\c#Tutorial\TutorialCSharp\bin\Debug\net6.0\TutorialCSharp.pdb
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.csproj.AssemblyReference.cache
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.AssemblyInfoInputs.cache
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.AssemblyInfo.cs
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.csproj.CoreCompileInputs.cache
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.dll
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\ref\TutorialCSharp.dll
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.pdb
+D:\Algorithms\c#Tutorial\TutorialCSharp\obj\Debug\net6.0\TutorialCSharp.genruntimeconfig.cache

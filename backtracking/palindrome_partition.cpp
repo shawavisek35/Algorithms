@@ -31,3 +31,42 @@ int main() {
     printAllPalindromes("nitin", "");
     return 0;
 }
+
+class Solution {
+public:
+    
+    bool isPalindrome(string s, int start, int end) {
+        int i=start;
+        int j = end;
+        while(i<j) {
+            if(s[i] != s[j]) return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    
+    void findPalindromes(string s, int index, vector<string> out, vector<vector<string>> &ans) {
+        if(index == s.size()) {
+            ans.push_back(out);
+            return;
+        }
+        for(int i=index;i<s.size();i++) {
+            if(isPalindrome(s, index, i)){
+                out.push_back(s.substr(index, i-index+1));
+                findPalindromes(s, i+1, out, ans);
+                //backtrack
+                out.pop_back();
+            }
+        }
+        return;
+    }
+    
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+        vector<string> out;
+        int n = s.size();
+        findPalindromes(s, 0, out, ans);
+        return ans;
+    }
+};
