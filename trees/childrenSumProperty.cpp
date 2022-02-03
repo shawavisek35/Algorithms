@@ -27,3 +27,4 @@ class Solution{
         return (root->data == lData + rData) && isSumProperty(root->left) && (isSumProperty(root->right));
     }
 };
+
