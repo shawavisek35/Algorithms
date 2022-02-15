@@ -1,4 +1,6 @@
 //Brute force method
+//Time Complexity : O(2n)
+//Space Complexity: O(n)
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -28,6 +30,8 @@ public:
 };
 
 //Efficient method
+//Time Complexity : O(n)
+//Space Complexity: O(height of Tree)
 /*
   use the concept of BST iterator with next and before property
 */
