@@ -14,7 +14,7 @@ public:
     
     bool validate(TreeNode *root, int lLimit, int hLimit) {
         if(!root) return true;
-        if(root->val < lLimit || root->val >= hLimit) {
+        if(root->val <= lLimit || root->val >= hLimit) {
             return false;
         }
         
