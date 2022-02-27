@@ -14,3 +14,21 @@ public:
 	    return findMax(n-1, arr, dp);
 	}
 };
+
+//Tabulation Method
+#include<bits/stdc++.h>
+using namespace std;
+int maximumNonAdjacentSum(vector<int> &nums){
+    // Write your code here.
+    int n = nums.size();
+    int dp[n+1];
+    memset(dp, -1, sizeof(dp));
+    dp[0] = nums[0];
+    
+    for(int i=1;i<n;i++) {
+        int take = nums[i];
+        if(i>1) take += dp[i-2];
+        dp[i] = max(dp[i-1], take);
+    }
+    return dp[n-1];
+}
