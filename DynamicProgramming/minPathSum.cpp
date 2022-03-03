@@ -26,3 +26,32 @@ int minSumPath(vector<vector<int>> &grid) {
     }
     return dp[n-1][m-1];
 }
+
+//Space optimised with tabulation
+#include<bits/stdc++.h>
+using namespace std;
+
+int minSumPath(vector<vector<int>> &grid) {
+    int n = grid.size();
+    int m = grid[0].size();
+    int temp;
+    vector<int> dp(m+1, 0);
+    dp[0] = grid[0][0];
+    for(int i=1;i<m;i++) {
+        dp[i] = dp[i-1] + grid[0][i];
+    }
+    for(int i=1;i<n;i++){
+        temp = grid[i][0];
+        for(int j=0;j<m;j++) {
+            if(j==0) {
+                dp[j] = dp[j] + temp;
+                temp = dp[j];
+            }
+            else {
+                dp[j] = min(temp, dp[j]) + grid[i][j];
+            	temp = dp[j];
+            }
+        }
+    }
+    return temp;
+}
