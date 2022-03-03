@@ -10,7 +10,20 @@ int totalPath(int n, int m, vector<vector<int>> &maze, vector<vector<int>> &dp) 
     return dp[n][m] = (totalPath(n-1, m, maze, dp)%mod + totalPath(n, m-1, maze, dp)%mod)%mod;
 }
 
-int mazeObstacles(int n, int m, vector< vector< int> > &mat) {
+int mazeObstacles(int n, int m, vector< vector< int> > &maze) {
     vector<vector<int>> dp(n+1, vector<int>(m+1, -1));
-    return totalPath(n-1, m-1, mat, dp);
+    for(int i=0;i<n;i++) {
+        for(int j=0;j<m;j++) {
+            if (maze[i][j] == -1) dp[i][j] = 0;
+            else if(i==0 && j==0) dp[i][j] = 1;
+            
+            else {
+                int up = 0, left=0;
+                if(i>0) up = dp[i-1][j];
+                if(j>0) left = dp[i][j-1];
+                dp[i][j] = (up + left)%mod;
+            }
+        }
+    }
+    return dp[n-1][m-1];
 }
