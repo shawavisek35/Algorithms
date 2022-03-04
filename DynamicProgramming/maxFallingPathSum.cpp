@@ -20,3 +20,28 @@ int getMaxPathSum(vector<vector<int>> &matrix)
     }
     return ans;
 }
+
+//Tabulation method
+int getMaxPathSum(vector<vector<int>> &matrix)
+{
+    int n = matrix.size();
+    int m = matrix[0].size();
+    //int ans = INT_MIN;
+    vector<vector<int>> dp(n+1, vector<int> (m+1, INT_MIN));
+    for(int i=0;i<m;i++) {
+        dp[0][i] = matrix[0][i];
+    }
+    for(int i=1;i<n;i++) {
+        for(int j=0;j<m;j++) {
+         	int temp = dp[i-1][j];
+            if(j > 0) temp = max(temp, dp[i-1][j-1]);
+            if(j < m-1) temp = max(temp, dp[i-1][j+1]);
+            dp[i][j] = temp + matrix[i][j];
+        }
+    }
+    int ans = INT_MIN;
+    for(int i=0;i<m;i++) {
+        ans = max(ans, dp[n-1][i]);
+    }
+    return ans;
+}
