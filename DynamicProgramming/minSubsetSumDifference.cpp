@@ -60,3 +60,30 @@ int minSubsetSumDifference(vector<int>& arr, int n)
     return ans;
 }
 
+#include<bits/stdc++.h>
+using namespace std;
+
+//very much space optimised
+int minSubsetSumDifference(vector<int>& arr, int n)
+{
+	int sum = 0;
+    for(auto it : arr) sum += it;
+    int dp[sum+1];
+    memset(dp, 0, sizeof(dp));
+    dp[0] = true;
+    for(int i=1;i<=n;i++) {
+        for(int j=sum;j>=0;j--) {
+            if(arr[i-1] <= j) {
+                dp[j] = dp[j] || dp[j-arr[i-1]];
+            }
+        }
+    }
+    
+    //finding minsum;
+    int ans = INT_MAX;
+    for(int i=0;i<=sum; i++) {
+        if(dp[i]) ans = min(ans, abs(sum - 2*i));
+    }
+    return ans;
+}
+
