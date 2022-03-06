@@ -29,7 +29,9 @@ class Solution
             }
         }
         for(int i=0;i<V;i++) {
-            if(key[i] != INT_MAX) minWeight += key[i];
+            if(isMst[i]) {
+                sum += key[i];
+            }
         }
         return minWeight;
     }
