@@ -27,3 +27,20 @@ int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight)
     }
     return dp[n][maxWeight];
 }
+
+#include<bits/stdc++.h>
+using namespace std;
+
+//space optimised
+int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight) 
+{
+	// Write your code here
+    vector<int> dp(maxWeight+1, 0);
+    for(int i=0;i<=n;i++) {
+        for(int j=maxWeight;j>=0;j--) {
+            if(weight[i-1] <= j) dp[j] = max(dp[j], dp[j-weight[i-1]] + value[i-1]);
+              
+        }
+    }
+    return dp[maxWeight];
+}
