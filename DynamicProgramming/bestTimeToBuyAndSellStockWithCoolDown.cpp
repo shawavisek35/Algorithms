@@ -19,7 +19,19 @@ public:
     
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
-        vector<int> dp(n+1, -1);
-        return findProfit(prices, 0, n, dp);
+        //vector<int> dp(n+1, -1);
+        
+        //with state transition
+        int noStock = 0;
+        int inHand = -prices[0];
+        int sold = 0;
+        
+        for(int i=1;i<n;i++) {
+            inHand = max(inHand, noStock - prices[i]);
+            noStock = max(noStock, sold);
+            sold = max(sold, inHand + prices[i]);
+        }
+        //return findProfit(prices, 0, n, dp);
+        return sold;
     }
 };
