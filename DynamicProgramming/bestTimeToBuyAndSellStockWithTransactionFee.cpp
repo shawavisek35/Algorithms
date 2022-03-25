@@ -36,3 +36,27 @@ public:
         //return findProfit(prices, 0, n, fee, dp);
     }
 };
+
+//tabulation
+class Solution {
+public:
+    int maxProfit(vector<int>& prices, int fee) {
+        int n = prices.size();
+        vector<int> dp(n+1, 0);
+        
+        //tabulation
+        for(int i=n-2;i>=0;i--) {
+            int maxProfit = 0;
+            for(int j=i+1;j<n;j++) {
+                if(prices[j] > prices[j-1]) {
+                    int takeProfit = prices[j] - prices[i];
+                    maxProfit = max(maxProfit, takeProfit - fee + dp[j]);
+                } 
+            }
+            
+            //if decided not to take not take
+            dp[i] = max(maxProfit, dp[i+1]);
+        }
+        return dp[0];
+    }
+};
