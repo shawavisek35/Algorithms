@@ -35,3 +35,28 @@ public:
         return sold;
     }
 };
+
+//tabulation 
+class Solution {
+public:
+    
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        vector<int> dp(n+1, 0);
+        
+        //tabulation
+        for(int i=n-2;i>=0;i--) {
+            int maxProfit = 0;
+            for(int j=i+1;j<n;j++) {
+                if(prices[j] > prices[j-1]) {
+                    int takeProfit = 0;
+                    takeProfit += prices[j] - prices[i];
+                    if(j+2<=n) takeProfit += dp[j+2];
+                    maxProfit = max(maxProfit, takeProfit);    
+                }
+            }
+            dp[i] = max(maxProfit, dp[i+1]);
+        }
+        return dp[0];
+    }
+};
