@@ -60,3 +60,29 @@ public:
         return dp[0];
     }
 };
+
+
+//state transition method
+class Solution {
+public:
+    
+    int findProfit(vector<int> &prices, int ind, int n, int fee, int buy, vector<vector<int>> &dp) {
+        if(ind>=n) return 0;
+        if(dp[buy][ind] != -1) return dp[buy][ind];
+        if(buy) {
+            return dp[buy][ind] = max(-prices[ind] + findProfit(prices, ind+1, n, fee, 0, dp), findProfit(prices, ind+1, n, fee, 1, dp));
+        }
+        else {
+            return dp[buy][ind] = max(prices[ind] - fee + findProfit(prices, ind+1, n, fee, 1, dp), findProfit(prices, ind+1, n, fee, 0, dp));
+        }
+    }
+    
+    int maxProfit(vector<int>& prices, int fee) {
+        int n = prices.size();
+        vector<vector<int>> dp(2, vector<int>(n+1,-1));
+        //using state transition 
+        //1 -> buy
+        //0 -> cannot buy
+        return findProfit(prices, 0, n, fee, 1, dp);
+    }
+};
