@@ -1,28 +1,26 @@
 class Solution {
 public:
     int maximizeSweetness(vector<int> &sweetness, int K) {
-       int i = 1;
+       int i = INT_MAX;
        int j = 0;
        for(auto it : sweetness) {
            j += it;
-           //i = min(i, it);
+           i = min(i, it);
        }
-       int n = sweetness.size();
-       int ans = 1;
+        int n = sweetness.size();
+       int ans = i;
        while(i<=j) {
            int mid = i + (j - i)/2;
-           int cnt = 0;
-           int k = 0;
            int sum = 0;
-           while(k<n) {
-              sum += sweetness[k];
-              if(sum >= mid) {
-                  sum = 0;
-                  cnt ++;
-              }
-              k++;
+           int cnt = 0;
+           for(int m=0;m<n;m++) {
+               sum += sweetness[m];
+               if(sum >= mid) {
+                   sum = 0;
+                   cnt ++;
+               }
            }
-           if(cnt >= K) {
+           if(cnt >= K+1){
                ans = mid;
                i = mid + 1;
            }
