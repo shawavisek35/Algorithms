@@ -5,7 +5,8 @@ public:
     bool comparator(string &word1, string &word2) {
         int i = 0;
         int j = 0;
-        while(i<word1.size() && j<word2.size()) {
+        if(word1.size() != word2.size()+1) return false;
+        while(i<word1.size()) {
             if(word1[i] == word2[j]) {
                 i++;
                 j++;
