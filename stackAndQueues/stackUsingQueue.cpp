@@ -38,11 +38,37 @@ public:
     }
 };
 
-/**
- * Your MyStack object will be instantiated and called as such:
- * MyStack* obj = new MyStack();
- * obj->push(x);
- * int param_2 = obj->pop();
- * int param_3 = obj->top();
- * bool param_4 = obj->empty();
- */
+//Using Single Queue
+class MyStack {
+public:
+    queue<int> st;
+    MyStack() {
+        
+    }
+    
+    void push(int x) {
+        st.push(x);
+        int n = st.size();
+        int i = 1;
+        while(i<n) {
+            st.push(st.front());
+            st.pop();
+            i++;
+        }
+    }
+    
+    int pop() {
+        int res = st.front();
+        st.pop();
+        return res;
+        
+    }
+    
+    int top() {
+        return st.front();
+    }
+    
+    bool empty() {
+        return st.empty();
+    }
+};
