@@ -21,4 +21,21 @@ class Solution
         }
         return -1;
     }
+    
+    //O(n) approach
+    int celebrity(vector<vector<int> >& M, int n) 
+    {
+        int c = 0;
+        for(int i=0;i<n;i++) {
+            if(M[c][i]) {
+                c = i;
+            }
+        }
+        
+        for(int i=0;i<n;i++) {
+            if(c!=i && (M[c][i] || !M[i][c])) return -1;
+        }
+        
+        return c;
+    }
 };
