@@ -40,3 +40,26 @@ public:
         return profit;
     }
 };
+
+//Another Implementation - Same Algorithm
+int Solution::maxProfit(const vector<int> &A) {
+    int profit = 0;
+    int n = A.size();
+    if(n <= 0) return 0;
+
+    //gathering all the local profit;
+    int minPrice = A[0];
+    int i;
+    for(i=1;i<n;i++) {
+        if(A[i] >= A[i-1]) {
+            continue;
+        }
+        else {
+            profit += A[i-1] - minPrice;
+            minPrice = A[i];
+        }
+    }
+
+    return profit += A[i-1] - minPrice;
+}
+
